@@ -1,42 +1,43 @@
 django-rest-auth
 ===
 
-로그인 및 패스워드 찾기 api센터
+Django-rest auth api center
 
-discription
+API endpoints
 ---
 
-### /password/reset
+- /login/ (POST)
+  - username
+  - email
+  - password
+  Returns Token key
 
-parameter: email
-return: success/fail message
+- /logout/ (POST)
+  - Calls Django logout method and delete the Token object
+  - assigned to the current User object.
+  > `ACCOUNT_LOGOUT_ON_GET = True` to allow logout using GET - this is the exact same configuration from allauth. NOT recommended, see: http://django-allauth.readthedocs.io/en/latest/views.html#logout
 
-### /password/reset/confirm
+- /password/reset (POST)
+  - email
+  Returns success/fail message
 
-parameter: token, uid, new_password1, new_password2
-return: success/fail message
+- /password/reset/confirm (POST)
+  - uid
+  - token
+  - new_password1
+  - new_password2
+  Returns success/fail message
+  > uid and token are sent in email after calling /rest-auth/password/reset/
 
-### /password/change
+- /password/change (POST)
+  - new_password1
+  - new_password2
+  - old_password
+  > `OLD_PASSWORD_FIELD_ENABLED = True` to use old_password.
+  > `LOGOUT_ON_PASSWORD_CHANGE = False` to keep the user logged in after password change
 
-parameter: new_password1, new_password2
-return: success/fail message
-
-### /login/
-
-parameter: username, password
-return: REST Framework Token Object's key.
-
-### /logout/
-
-Calls Django logout method and delete the Token object
-assigned to the current User object.
-
-Accepts/Returns nothing.
-
-### /user/
-
-Default accepted fields: username, first_name, last_name
-Default display fields: pk, username, email, first_name, last_name
-Read-only fields: pk, email
-
-Returns UserModel fields.
+- /user/ (GET, PUT, PATCH)
+  - username
+  - first_name
+  - last_name
+  Returns pk, username, email, first_name, last_name
