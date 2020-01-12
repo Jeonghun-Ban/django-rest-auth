@@ -2,7 +2,8 @@ django-rest-auth
 ===
 
 Django-rest auth demo api center
-https://django-rest-auth.readthedocs.io/en/latest/index.html
+
+reference: https://django-rest-auth.readthedocs.io/en/latest/index.html
 
 API endpoints
 ---
