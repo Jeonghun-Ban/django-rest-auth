@@ -1,7 +1,8 @@
 django-rest-auth
 ===
 
-Django-rest auth api center
+Django-rest auth demo api center
+https://django-rest-auth.readthedocs.io/en/latest/index.html
 
 API endpoints
 ---
@@ -12,15 +13,18 @@ API endpoints
   - username
   - email
   - password
+
   Returns Token key
 
 - /logout/ (POST)
   - Calls Django logout method and delete the Token object
   - assigned to the current User object.
+
   > `ACCOUNT_LOGOUT_ON_GET = True` to allow logout using GET - this is the exact same configuration from allauth. NOT recommended, see: http://django-allauth.readthedocs.io/en/latest/views.html#logout
 
 - /password/reset (POST)
   - email
+
   Returns success/fail message
 
 - /password/reset/confirm (POST)
@@ -28,7 +32,9 @@ API endpoints
   - token
   - new_password1
   - new_password2
+
   Returns success/fail message
+
   > uid and token are sent in email after calling /rest-auth/password/reset/
 
 - /password/change (POST)
@@ -44,6 +50,7 @@ API endpoints
   - username
   - first_name
   - last_name
+  
   Returns pk, username, email, first_name, last_name
 
 ### Registration
@@ -52,7 +59,7 @@ API endpoints
   - username
   - password1
   - password2
-   - email
+  - email
 
 - registration/verify-email/ (POST)
   - key
