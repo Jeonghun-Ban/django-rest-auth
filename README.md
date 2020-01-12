@@ -6,6 +6,8 @@ Django-rest auth api center
 API endpoints
 ---
 
+### Basic 
+
 - /login/ (POST)
   - username
   - email
@@ -33,7 +35,9 @@ API endpoints
   - new_password1
   - new_password2
   - old_password
+
   > `OLD_PASSWORD_FIELD_ENABLED = True` to use old_password.
+
   > `LOGOUT_ON_PASSWORD_CHANGE = False` to keep the user logged in after password change
 
 - /user/ (GET, PUT, PATCH)
@@ -41,3 +45,14 @@ API endpoints
   - first_name
   - last_name
   Returns pk, username, email, first_name, last_name
+
+### Registration
+
+- /registration/ (POST)
+  - username
+  - password1
+  - password2
+   - email
+
+- registration/verify-email/ (POST)
+  - key
